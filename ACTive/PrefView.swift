@@ -8,19 +8,42 @@
 import SwiftUI
 
 struct PrefView: View {
-    @State var accountGo=false
+    @State var detectQuitAction=false
+    @StateObject var user=User()
+    @Binding var isPro:Bool
     var body: some View {
         NavigationStack{
             List{
-                NavigationLink(destination: AccountView()){
-                    Label("Account",systemImage: "person.circle")
+                Section(header: Text("Account")){
+                    NavigationLink(destination: MeView().environmentObject(user)){
+                        Label("Me",systemImage: "person")}
+                    NavigationLink(destination: EmptyView()){
+                        Label("Tasks",systemImage: "square.and.pencil")}
                 }
-            }
-            .navigationTitle("Me")
+                Section(header:Text("Advanced")){
+                    Toggle(isOn: $detectQuitAction, label: {
+                        Label("Quitting Action Detection",systemImage: "figure.walk.arrival")})
+                    Label(isPro ? "Lesson is unlocked." : "Lesson available for Pro.",systemImage: "person.2")
+                }
+                    Section(header: Text("ACTive")){
+                        NavigationLink(destination: AboutUsView()){
+                            Label("About us",systemImage: "person.3.sequence")}
+                        NavigationLink(destination: EmptyView()){
+                            Label("Contact us",systemImage: "ellipsis.message")}
+                    }
+                Section(header: Text("Debug")){
+                    Toggle(isOn: $isPro, label: {
+                        Label("Is Pro user",systemImage: "crown")
+                    })
+                    }
+                }
+            .navigationTitle("Preferences")
         }
     }
 }
 
-#Preview {
-    PrefView()
-}
+//struct Prefiew_previews: PreviewProvider{
+//    static var previews: some View{
+//        PrefView()
+//    }
+//}
