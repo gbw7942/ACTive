@@ -17,11 +17,6 @@ struct LessonView: View {
                         Text("Behavior Therapy Intro")}
                     NavigationLink(destination:EmptyView()){
                         Text("How to encourage yourself")}}
-                Section(header:Text("Coaching")){
-                    NavigationLink(destination:CoachView()){
-                        Text("Coach Dr. Lee")
-                    }
-                }
                 
             }.navigationTitle("Lessons for \(user.user.username)")
         }

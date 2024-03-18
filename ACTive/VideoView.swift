@@ -2,7 +2,7 @@
 //  VideoView.swift
 //  ACTive
 //
-//  Created by Gabriel Wang on 12/21/23.
+//  Created by Gabriel Wang on 12/22/23.
 //
 
 import SwiftUI

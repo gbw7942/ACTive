@@ -1,3 +1,10 @@
+//
+//  MeView.swift
+//  ACTive
+//
+//  Created by Gabriel Wang on 12/28/23.
+//
+
 import SwiftUI
 
 struct MeView: View {
