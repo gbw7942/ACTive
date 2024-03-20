@@ -22,10 +22,6 @@ struct MeView: View {
         }
     }
 
-struct Meview_previews: PreviewProvider{
-    static var previews: some View{
-        MeView()
-    }
-}
+
 
 

@@ -24,15 +24,16 @@ struct TodayView: View {
                 }
                 
             }
-            .toolbar{
-                ToolbarItem(placement: .navigation){
-                    VStack(alignment:.leading){
-                        Text("Hi, \(user.user.username)").font(.footnote)
-                        Text("\(dateFormat())").font(.footnote)
-                        Spacer()
-                    }
-                }
-            }.navigationTitle("Today")
+//            .toolbar{
+//                ToolbarItem(placement: .navigation){
+//                    VStack(alignment:.leading){
+//                        Text("Hi, \(user.user.username)").font(.footnote)
+//                        Text("\(dateFormat())").font(.footnote)
+//                        Spacer()
+//                    }
+//                }
+//            }
+            .navigationTitle("Today")
         }
     }
 }
@@ -87,10 +88,10 @@ struct ColorOptions:Codable{
 }
 
 struct CircularProgressView: View {
-    @State var progress=0.0
-    var progressPercent: Int{Int(round(progress*100))}
+    @State var progress=calculateTotalCompleteness()
     var body: some View {
         VStack {
+            Spacer().frame(minHeight: 100)
             Text("Today's task: ").font(.title).bold().padding()
             Spacer()
             ZStack {
@@ -105,9 +106,8 @@ struct CircularProgressView: View {
                     .frame(width: 200, height: 200)
                     .rotationEffect(.degrees(-90))
                     .animation(.easeOut, value: progress)
-                Text("\(progressPercent)%").font(.title)
+                Text("\(Int(round(progress*100)))%").font(.title)
             }
-            Slider(value: $progress, in: 0...1, step: 0.01).padding()
         }.frame(width: 300,height: 350)
     }
 }
@@ -119,4 +119,21 @@ func dateFormat()->String{
     dateFormatter.locale=Locale.current
     dateFormatter.dateStyle = .short
     return dateFormatter.string(from: date)
+}
+
+func calculateTotalCompleteness() ->Double{
+    var todayTotalTime=0.0
+    var todayCompleteTime=0.0
+    if let retrievedTasks = retrieveTasksFromKeychain() {
+        retrievedTasks.forEach { singleTask in
+            todayTotalTime += singleTask.totaltime
+            todayCompleteTime += singleTask.completetime
+        }
+    }
+    if todayTotalTime > 0 {
+            let completenessPercentage = todayCompleteTime / todayTotalTime
+            return completenessPercentage
+        } else {
+            return 0
+        }
 }

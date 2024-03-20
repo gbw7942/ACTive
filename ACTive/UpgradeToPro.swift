@@ -10,36 +10,61 @@ import SwiftUI
 struct UpgradeToProView: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.yellow.gradient).ignoresSafeArea()
-            VStack(alignment: .center){
-                Group{
-                    Text("Benefits of being a Pro user").font(.title).bold().foregroundStyle(Color.black).fontWeight(.black)
-                        .padding(.bottom,40)
+            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.2), Color.purple.opacity(0.2)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(alignment: .center, spacing: 20) {
+                Text("Benefits of Being a Pro User")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                
+                HStack(spacing: 20) {
+                    featureColumn(title: "Standard Version", features: [
+                        ("No video lessons", "lightbulb.slash"),
+                        ("Standard analysis", "wrench.adjustable"),
+                        ("No protection", "wrongwaysign"),
+                        ("Isolated data", "icloud.slash")
+                    ], textColor: Color.gray)
+                    
+                    featureColumn(title: "Pro Version", features: [
+                        ("Video lessons", "lightbulb.fill"),
+                        ("Better analysis", "wrench.and.screwdriver.fill"),
+                        ("Better detection", "figure.walk.arrival"),
+                        ("Share to coach", "icloud.fill")
+                    ], textColor: Color.green)
                 }
-                HStack {
-                    VStack(alignment:.leading){
-                        Text("Standard Version").bold().foregroundStyle(Color.gray).padding(.bottom,40)
-                        Divider()
-                        Label("No video lessons",systemImage: "lightbulb.slash").foregroundStyle(Color.gray).padding(.bottom)
-                        Label("Standard analysis",systemImage: "wrench.adjustable").foregroundStyle(Color.gray).padding(.bottom)
-                        Label("No protection",systemImage: "wrongwaysign").foregroundStyle(Color.gray).padding(.bottom)
-                        Label("Isolated data",systemImage: "icloud.slash").foregroundStyle(Color.gray).padding(.bottom)
-                    }.padding(.trailing,10).padding(.trailing,5)
-                    VStack(alignment:.trailing){
-                        Label("Pro Version",systemImage: "crown.fill").bold().foregroundStyle(Color.red).padding(.bottom,40)
-                        Divider()
-                        Label("Video lessons",systemImage: "lightbulb.fill").foregroundStyle(Color.red).padding(.bottom)
-                        Label("Better analysis",systemImage: "wrench.and.screwdriver.fill").foregroundStyle(Color.red).padding(.bottom)
-                        Label("Better detection",systemImage: "figure.walk.arrival").foregroundStyle(Color.red).padding(.bottom)
-                        Label("Share to coach",systemImage: "icloud.fill").foregroundStyle(Color.red).padding(.bottom)
-                    }.padding(.leading,10).padding(.trailing,5)
-                }
+                .padding()
+                .background(Color.white.opacity(0.5))
+                .cornerRadius(15)
+                .shadow(radius: 5)
+            }
+            .padding()
+        }
+    }
+    
+    private func featureColumn(title: String, features: [(String, String)], textColor: Color) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title)
+                .bold()
+                .padding(.bottom, 5)
+            
+            ForEach(features, id: \.0) { feature in
+                Label(feature.0, systemImage: feature.1)
+                    .foregroundColor(textColor)
             }
         }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white.opacity(0.3)))
+        .shadow(radius: 3)
     }
 }
 
-#Preview {
-    UpgradeToProView()
+struct UpgradeToProView_Previews: PreviewProvider {
+    static var previews: some View {
+        UpgradeToProView()
+    }
 }
-

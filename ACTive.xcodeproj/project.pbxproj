@@ -23,7 +23,6 @@
 		7E1131A92BA7E0A4005DD596 /* PrefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1131A82BA7E0A4005DD596 /* PrefView.swift */; };
 		7E1131AA2BA7E0A4005DD596 /* PrefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1131A82BA7E0A4005DD596 /* PrefView.swift */; };
 		7E1131B32BA7E153005DD596 /* TaskSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1131B22BA7E153005DD596 /* TaskSettingView.swift */; };
-		7E1131B52BA7E163005DD596 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1131B42BA7E163005DD596 /* LessonView.swift */; };
 		7E1131B92BA7E1A3005DD596 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1131B82BA7E1A3005DD596 /* TodayView.swift */; };
 		7E41FDCA2BA8A03500FC0FB6 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E41FDC92BA8A03500FC0FB6 /* BetterSafariView */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		7E1131A52BA7E08D005DD596 /* AboutUsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		7E1131A82BA7E0A4005DD596 /* PrefView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefView.swift; sourceTree = "<group>"; };
 		7E1131B22BA7E153005DD596 /* TaskSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSettingView.swift; sourceTree = "<group>"; };
-		7E1131B42BA7E163005DD596 /* LessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		7E1131B82BA7E1A3005DD596 /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +120,6 @@
 				7E1131742BA793D1005DD596 /* Preview Content */,
 				7E1131B22BA7E153005DD596 /* TaskSettingView.swift */,
 				7E11319A2BA794F3005DD596 /* UpgradeToPro.swift */,
-				7E1131B42BA7E163005DD596 /* LessonView.swift */,
 				7E1131A22BA7E081005DD596 /* VideoView.swift */,
 				7E1131B82BA7E1A3005DD596 /* TodayView.swift */,
 			);
@@ -293,7 +290,6 @@
 				7E1131B32BA7E153005DD596 /* TaskSettingView.swift in Sources */,
 				7E1131A02BA7E070005DD596 /* MeView.swift in Sources */,
 				7E1131A32BA7E081005DD596 /* VideoView.swift in Sources */,
-				7E1131B52BA7E163005DD596 /* LessonView.swift in Sources */,
 				7E1131B92BA7E1A3005DD596 /* TodayView.swift in Sources */,
 				7E11316D2BA793D0005DD596 /* ACTiveApp.swift in Sources */,
 				7E1131A92BA7E0A4005DD596 /* PrefView.swift in Sources */,
