@@ -13,28 +13,21 @@ struct TodayView: View {
     @StateObject var user=User()
     @StateObject var taskData=TaskData()
     var body: some View{
-        NavigationStack{
-            VStack(alignment:.center){
-                CircularProgressView()
-                Divider()
-                if let retrievedTasks = retrieveTasksFromKeychain() {
-                    ForEach(retrievedTasks){ singleTask in
-                        TodayTaskProgress(tasks: singleTask)
+            NavigationStack{
+                ScrollView{
+                    VStack(alignment:.center){
+                        CircularProgressView()
+                        Spacer()
+                        if let retrievedTasks = retrieveTasksFromKeychain() {
+                            ForEach(retrievedTasks){ singleTask in
+                                TodayTaskProgress(tasks: singleTask)
+                            }
+                        }
+                        
                     }
                 }
-                
-            }
-//            .toolbar{
-//                ToolbarItem(placement: .navigation){
-//                    VStack(alignment:.leading){
-//                        Text("Hi, \(user.user.username)").font(.footnote)
-//                        Text("\(dateFormat())").font(.footnote)
-//                        Spacer()
-//                    }
-//                }
-//            }
-            .navigationTitle("Today")
-        }
+                .navigationTitle("Today")
+        }.padding(.bottom)
     }
 }
 
@@ -49,7 +42,7 @@ struct TodayTaskProgress: View {
                 ProgressView(value: tasks.completetime,total: tasks.totaltime){
                     Text("\(Int(round((tasks.completeness.round(to: 0)))))%").font(.footnote).foregroundStyle(tasks.completetime==tasks.totaltime ? .secondary:.primary)}
                 .frame(width: 300)
-                .tint(tasks.completetime==tasks.totaltime ? .secondary:ColorOptions.set())
+                .tint(tasks.completetime==tasks.totaltime ? .secondary:tasks.color.color)
                 .animation(.easeOut, value: 0.07)
             }.padding(.bottom,10)
             
@@ -61,31 +54,7 @@ struct TodayTaskProgress: View {
     }
 }
 
-struct ColorOptions:Codable{
-    static var all: [Color] = [
-            .primary,
-            .gray,
-            .red,
-            .orange,
-            .blue,
-            .brown,
-            .yellow,
-            .green,
-            .mint,
-            .cyan,
-            .indigo,
-            .purple,
-        ]
-    
-    static func set() -> Color {
-            if let element = ColorOptions.all.randomElement() {
-                return element
-            } else {
-                return .primary
-            }
-            
-        }
-}
+
 
 struct CircularProgressView: View {
     @State var progress=calculateTotalCompleteness()

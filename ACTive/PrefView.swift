@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrefView: View {
     @State var detectQuitAction=false
-    @StateObject var user=User()
+    @ObservedObject var user: User
     @Binding var isPro:Bool
 //    @Binding var isCoach:Bool
     var body: some View {
@@ -36,6 +36,9 @@ struct PrefView: View {
                     Toggle(isOn: $isPro, label: {
                         Label("Is Pro user",systemImage: "crown")
                     })
+                    .onChange(of: isPro){ newValue in
+                        user.user.isPro = newValue
+                    }
 //                    Toggle(isOn: $isCoach, label: {
 //                        Text("Is Coach")
 //                    })
